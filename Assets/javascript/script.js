@@ -17,15 +17,16 @@ submitBtn.click(function(){
     localStorage.setItem('citiesSrchdStore', JSON.stringify(citiesSearched));
     $("ul").append('<li>'+ cityInpt.val() + '</li>');
     getWeather(cityInpt.val());
+    getForecast(cityInpt.val()); 
   });
 
 function getWeather(cityName){
   var nowWeatherUrl='https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + apiKey;
   fetchProcess(nowWeatherUrl)};
 
-function getForecast(){
-  var nowWeatherUrl='https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + apiKey;
-  fetchProcess(nowWeatherUrl)};
+function getForecast(cityName){
+  var nowForecastUrl='https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&appid=' + apiKey;
+  fetchProcess(nowForecastUrl)};
 
 
 function fetchProcess(requestUrl){
