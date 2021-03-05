@@ -3,3 +3,13 @@ main {
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+.left-pane{
+    position: absolute;
+    top:8vh;
+    bottom:0;
+}
+
+.current-weather{
+    margin-left: 30%;
+}

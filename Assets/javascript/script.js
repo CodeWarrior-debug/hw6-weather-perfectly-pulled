@@ -40,7 +40,7 @@ function getWeather(cityName){
       return response.json();})
     .then(function(data){
       cityTag.text(data.name);
-      factList.append('<li>'+ + ((parseFloat(data.main.temp) -273.15) *1.8 + 32 )+ ' F </li>'); //populate temperature, list of facts ///(0K − 273.15) × 9/5 + 32 = -459.7°F
+      factList.append('<li>'+ + ((parseFloat(data.main.temp) -273.15) *1.8 + 32 ).toFixed(2)+ ' F </li>'); //populate temperature, list of facts ///(0K − 273.15) × 9/5 + 32 = -459.7°F
       factList.append('<li>'+ data.main.humidity + '</li>'); //populate humidity - 
       factList.append('<li>'+ data.weather[0].main + '</li>'); //basic weather - cloudly, clear
     })
