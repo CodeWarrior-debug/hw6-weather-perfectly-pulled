@@ -28,9 +28,16 @@ main {
 article{
     display:flex;
     flex-direction: column;
+    border-style: solid;
+    border-color: grey;
 
 }
 
 ul{
     list-style: none;
+}
+
+.future{
+    padding:1%;
+    margin:1%;
 }

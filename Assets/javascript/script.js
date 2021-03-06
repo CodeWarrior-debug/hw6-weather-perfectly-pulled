@@ -24,7 +24,6 @@ submitBtn.click(function(){
 
 //process data - start of function for both fetches
 
-
 function processData(srchCity){
   citiesSearched.push(srchCity); // add to array
   if ((citiesSearched.length)> 10) {citiesSearched.splice(0,1)}; //if too many cities, chop oldest off
@@ -74,62 +73,36 @@ function getForecast(cityName){
   })
   .then(function (data) {
     console.log(data);
-    //fact list pattern
+
+    //fact list pattern -https://stackoverflow.com/questions/44177417/how-to-display-openweathermap-weather-icon
     $("#0-1").text((today.add(.5, "d").format('YYYY-MM-DD')));
-    $("#0-3").text(data.list[0].main.humidity +'%');
+    $("#0-2").attr('src', "http://openweathermap.org/img/w/"+ data.list[0].weather[0].icon +".png")
+    $("#0-3").text("Humidity: " + data.list[0].main.humidity +'%');
     $("#0-4").text(((parseFloat((data.list[0].main.temp)) -273.15) *1.8 + 32 ).toFixed(2)+ ' F');
 
     $("#0-5").text(today.add(1, "d").format('YYYY-MM-DD'));
-    $("#0-7").text(data.list[7].main.humidity +'%');
+    $("#0-6").attr('src', "http://openweathermap.org/img/w/"+ data.list[7].weather[0].icon +".png")
+    $("#0-7").text("Humidity: " + data.list[7].main.humidity +'%');
     $("#0-8").text(((parseFloat((data.list[7].main.temp)) -273.15) *1.8 + 32 ).toFixed(2)+ ' F');
     
     $("#0-9").text(today.add(1.1, "d").format('YYYY-MM-DD'));
-    $("#0-11").text(data.list[15].main.humidity +'%');
+    $("#0-10").attr('src', "http://openweathermap.org/img/w/"+ data.list[15].weather[0].icon +".png")
+    $("#0-11").text("Humidity: " + data.list[15].main.humidity +'%');
     $("#0-12").text(((parseFloat((data.list[15].main.temp)) -273.15) *1.8 + 32 ).toFixed(2)+ ' F');
 
     $("#0-13").text(today.add(1.2, "d").format('YYYY-MM-DD'));
-    $("#0-15").text(data.list[23].main.humidity +'%');
+    $("#0-14").attr('src', "http://openweathermap.org/img/w/"+ data.list[23].weather[0].icon +".png")
+    $("#0-15").text("Humidity: " + data.list[23].main.humidity +'%');
     $("#0-16").text(((parseFloat((data.list[23].main.temp)) -273.15) *1.8 + 32 ).toFixed(2)+ ' F');
 
     $("#0-17").text(today.add(1.3, "d").format('YYYY-MM-DD'));
-    $("#0-19").text(data.list[31].main.humidity +'%');
+    $("#0-18").attr('src', "http://openweathermap.org/img/w/"+ data.list[31].weather[0].icon +".png")
+    $("#0-19").text("Humidity: " + data.list[31].main.humidity +'%');
     $("#0-20").text(((parseFloat((data.list[31].main.temp)) -273.15) *1.8 + 32 ).toFixed(2)+ ' F');
 
     return;
   });
 }
-
-//actual fetch
-
-// //actual fetch
-//  fetch(nowForecastUrl)
-//     .then(function (response) {
-//       return response.json();
-//     })
-//     .then(function (data) {
-//       return data;
-//     });
-//   }
-
-
-// function fetchProcess(requestUrl){
-//   fetch(requestUrl)
-//   .then(function (response) {
-//     return response.json();
-//   })
-//   .then(function (data) {
-//     return data;
-//     console.log(data) //change action to purpose
-//     }
-//   )};
-
-  // fetch('http://example.com/movies.json')
-  // .then(response => response.json())
-  // .then(data => console.log(data));
-
-// function getApi() {
-//     // fetch request gets a list of all the repos for the node.js organization
-//     var requestUrl = 'https://api.github.com/orgs/nodejs/repos';
   
     //--ul display of search history built
     //Working API Call 1 - https://api.openweathermap.org/data/2.5/weather?q=Charlotte&appid=16d579fb98020ce8daf7d5ea4ad1f4c3
