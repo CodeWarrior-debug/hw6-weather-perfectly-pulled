@@ -5,34 +5,33 @@ var submitBtn = $('#submit');
 var searchedCityList=$('#searched-cities');
 var factList=$('#current-facts');
 var citiesSearched=JSON.parse(localStorage.getItem(('citiesSrchdStore'))) || [];
-var weatherData;
-var data;
-var forecastData;
-var uvData;
-var fixedTime ="07:00:00";
 var cityTag=$('#city-tag');
+var today = moment();
 
 // load recent Cities to page
 for (item of citiesSearched) {searchedCityList.append(('<li>'+ item + '</li>'))};
 
-//identify most recent city
- citiesSearched[citiesSearched.length-1]
+//identify most recent city, then pull data for it
+
+processData(citiesSearched[citiesSearched.length-1]);
 
 //set event listener
 
 submitBtn.click(function(){
     event.preventDefault();
-    processData();
+    processData(cityInpt.val());
   });
 
 //process data - start of function for both fetches
-function processData(){
-  citiesSearched.push(cityInpt.val()); // add to array
+
+
+function processData(srchCity){
+  citiesSearched.push(srchCity); // add to array
   if ((citiesSearched.length)> 10) {citiesSearched.splice(0,1)}; //if too many cities, chop oldest off
   localStorage.setItem('citiesSrchdStore', JSON.stringify(citiesSearched));
   searchedCityList.append('<li>'+ cityInpt.val() + '</li>'); //populate list of recently searched cities
-  getWeather(cityInpt.val()); 
-  // getForecast(cityInpt.val()); 
+  getWeather(srchCity); 
+  getForecast(srchCity); 
 };
 
 //fetch for current
@@ -66,25 +65,51 @@ function getWeather(cityName){
       // factList.append('<li>'+ data.weather[0].main + '</li>'); //basic weather - cloudly, clear
     }
 
-
 //fetch for forecast
 function getForecast(cityName){
-  var nowForecastUrl='https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&appid=' + apiKey + "'";
-  var forecastData=fetchProcess(nowForecastUrl);
-  forecastData.list.main.temp
+  var nowForecastUrl='https://api.openweathermap.org/data/2.5/forecast?q=' + cityName + '&appid=' + apiKey;
+  fetch(nowForecastUrl)
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (data) {
+    console.log(data);
+    //fact list pattern
+    $("#0-1").text((today.add(.5, "d").format('YYYY-MM-DD')));
+    $("#0-3").text(data.list[0].main.humidity +'%');
+    $("#0-4").text(((parseFloat((data.list[0].main.temp)) -273.15) *1.8 + 32 ).toFixed(2)+ ' F');
+
+    $("#0-5").text(today.add(1, "d").format('YYYY-MM-DD'));
+    $("#0-7").text(data.list[7].main.humidity +'%');
+    $("#0-8").text(((parseFloat((data.list[7].main.temp)) -273.15) *1.8 + 32 ).toFixed(2)+ ' F');
+    
+    $("#0-9").text(today.add(1.1, "d").format('YYYY-MM-DD'));
+    $("#0-11").text(data.list[15].main.humidity +'%');
+    $("#0-12").text(((parseFloat((data.list[15].main.temp)) -273.15) *1.8 + 32 ).toFixed(2)+ ' F');
+
+    $("#0-13").text(today.add(1.2, "d").format('YYYY-MM-DD'));
+    $("#0-15").text(data.list[23].main.humidity +'%');
+    $("#0-16").text(((parseFloat((data.list[23].main.temp)) -273.15) *1.8 + 32 ).toFixed(2)+ ' F');
+
+    $("#0-17").text(today.add(1.3, "d").format('YYYY-MM-DD'));
+    $("#0-19").text(data.list[31].main.humidity +'%');
+    $("#0-20").text(((parseFloat((data.list[31].main.temp)) -273.15) *1.8 + 32 ).toFixed(2)+ ' F');
+
+    return;
+  });
 }
 
 //actual fetch
 
-function fetchWthr(url) {   //actual fetch
- fetch(url)
-    .then(function (response) {
-      return response.json();
-    })
-    .then(function (data) {
-      return data;
-    });
-  }
+// //actual fetch
+//  fetch(nowForecastUrl)
+//     .then(function (response) {
+//       return response.json();
+//     })
+//     .then(function (data) {
+//       return data;
+//     });
+//   }
 
 
 // function fetchProcess(requestUrl){
