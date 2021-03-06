@@ -11,5 +11,22 @@ main {
 }
 
 .current-weather{
+    display:flex;
+    position:absolute;
     margin-left: 30%;
+    height: 40%;
+}
+
+.forecast{
+    display:flex;
+    position:absolute;
+    margin-left: 30%;
+    height: 40%;
+    top: 40%
+}
+
+article{
+    display:flex;
+    flex-direction: column;
+
 }
