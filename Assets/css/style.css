@@ -1,46 +1,30 @@
-/* main {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-}
-
 .left-pane{
-    position: absolute;
-    top:8vh;
-    bottom:0;
+    display: flex;
+    width: 33.33%;
+    min-height: 33.33%;
 }
 
-.current-weather{
-    display:flex;
-    position:absolute;
-    margin-left: 30%;
-    height: 40%;
-    border-style: solid;
-    border-color: grey;
-}
-
-.forecast{
-    display:flex;
-    position:absolute;
-    margin-left: 30%;
-    height: 40%;
-    top: 40%
-}
-
-article{
-    display:flex;
+.current-stuff {
+    display: flex;
     flex-direction: column;
-    border-style: solid;
-    border-color: grey;
-
+    width: 20%;
+    margin: 0;
 }
 
-ul{
+.flex{
+    display: flex;
+    margin: 0;
+}
+
+.flex-column{
+    display: flex;
+    flex-direction: column;
+}
+
+.left-shift{
+    margin-left: 33.33%;
+}
+
+li{
     list-style: none;
 }
-
-.future{
-    padding:1%;
-    margin:1%;
-
-} */

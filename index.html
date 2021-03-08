@@ -14,46 +14,36 @@
 <body>
     <header class='jumbotron p-2'>
         <h1>Weather Dashboard</h1>
-
     </header>
 
-    <div class="container">
-        <div class="row">
-
-            <!-- Selector and Recent List-->
-            <div class="left-pane col-4">
-                <h2>City Search</h2>
-                <div class="col-1">
-                <div class="input-group mb-3">
-                    <input id="city" type="text" class="form-control">
-                    <button class="btn btn-outline-secondary bg-primary text-white" type="button" id="button-addon2"><i class="fa fa-search"></i></button>
-                 </div>
-                </div>
-
-                <!-- <form>
-                    <label for="city">City Name:</label><br>
-                    <input type="text" id="city" name="city"><br>
-                    <input type="submit" id="submit" value="Submit">
-                </form> -->
-
-                <ul class="list-group"id="searched-cities">
-                </ul>
-
-            </div>
-
-            <!-- Current Weather Card-->
-            
-            <div class="current-weather small-8">
-                <div class='row'>
-                <h3 id="city-tag"></h3>
-                <p id="current-facts"></p>
-                </div>
-            </div>
+    <!-- Selector and Recent List-->
+    <div class="left-pane col-4 flex-column">
+        <h2 class='flex'>City Search</h2>
+        <div class="input-group flex">
+            <input id="city" type="text" class="form-control col-4"></input>
+            <button class="btn btn-outline-secondary bg-primary text-white col-4 flex" type="button"  id="submit"><i class="fa fa-search"></i>Submit</button>
         </div>
+        <ul class="list-group flex"id="searched-cities"></ul>
+    </div>
+    <!-- Current Weather Card-->
+    <div class="current-weather col-8 flex">
+        <h3 id="city-tag" class='flex'></h3>
+        <ul id="current-facts" class='flex'>
+            <li></li>
+        </ul>
+
+    </div>
+<!--     
+    <div class='current-stuff col-8'>
+        <p class='flex'>H</p>
+        <p class='flex'>I</p>
+        <p class='flex'>J</p>
+        <p class='flex'>K</p>
+    </div> -->
+
         <!-- 5 day forecast -->
         <div class="row">
-        <h3>5 Day Forecast</h3>
-        <!-- <div class="forecast col-9"> -->
+        <h3 class='left-shift'>5 Day Forecast</h3>
             <article id="day-1" class="future">
                 <p id="0-1" class="1"></p>
                 <img id="0-2" src="" alt="icon">
@@ -87,13 +77,11 @@
         <!-- </div> -->
         <!-- </main> -->
     </div>
-</div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
         integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
         crossorigin="anonymous"></script>
     <script src="Assets\javascript\script.js"></script>
 </body>
-
 
 </html>

@@ -47,6 +47,7 @@ function getWeather(cityName){
           if (factList) {factList.remove};
           cityTag.after('<ul id="current-facts"></ul>');
           factList=$('#current-facts');
+          factList.append('<li>'+ cityName + '</li>'); //populate humidity - 
           factList.append('<li>'+ + ((parseFloat(data.main.temp) -273.15) *1.8 + 32 ).toFixed(2)+ ' F </li>'); //populate temperature, list of facts ///(0K − 273.15) × 9/5 + 32 = -459.7°F
           factList.append('<li>'+ data.main.humidity + '</li>'); //populate humidity - 
           factList.append('<li>'+ data.weather[0].main + '</li>'); //basic weather - cloudly, clear    
@@ -94,8 +95,3 @@ function getForecast(cityName){
   });
 }
   
-
-// WHEN I view current city weather// THEN I get city name, the date, an icon rep of weather conditions, temperature, humidity, wind speed, UV index
-// WHEN I view the UV indexTHEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
-// WHEN I view future weather conditions for that city// THEN a 5-day forecast that displays the date, an icon representation of weather conditions, the temperature, humidity
-// WHEN I click on a city in the search history// THEN I am again presented with current and future conditions for that city
